@@ -17,7 +17,386 @@
         ::-webkit-scrollbar-track {
             background: #111827; /* gray-900 */
         }
+        ::-webkit-scrollbar-thumb {<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshya Kaushik | AI & ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A little extra polish for the scrollbar and text selection */
+        ::selection {
+            background-color: #22d3ee; /* cyan-400 */
+            color: #ffffff;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827; /* gray-900 */
+        }
         ::-webkit-scrollbar-thumb {
+            background: #06b6d4; /* cyan-500 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0891b2; /* cyan-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <div class="relative">
+        <!-- Background Image and Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center bg-fixed"
+             style="background-image: url('https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+        </div>
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm"></div>
+
+        <div class="relative z-10">
+            <!-- Header -->
+            <header id="header" class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-70 backdrop-blur-md z-50">
+                <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex-shrink-0">
+                            <a href="#home" class="text-2xl font-bold tracking-wider text-cyan-400">LK</a>
+                        </div>
+                        <div class="hidden md:block">
+                            <div id="nav-links" class="ml-10 flex items-baseline space-x-4">
+                                <a href="#home" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                                <a href="#about" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                                <a href="#skills" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                                <a href="#experience" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                                <a href="#projects" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                                <a href="#education" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
+                                <a href="#contact" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                            </div>
+                        </div>
+                        <div class="-mr-2 flex md:hidden">
+                            <button id="menu-toggle" type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                                <span class="sr-only">Open main menu</span>
+                                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                                <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                <div id="mobile-menu" class="md:hidden hidden">
+                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <a href="#home" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                        <a href="#skills" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#experience" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                        <a href="#projects" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                        <a href="#education" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Education</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    </div>
+                </div>
+            </header>
+
+            <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+                <!-- Home Section -->
+                <section id="home" class="min-h-screen flex items-center">
+                    <div class="text-center md:text-left w-full">
+                        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">Lakshya Kaushik</h1>
+                        <p class="text-2xl md:text-3xl text-cyan-400 mb-8">AI & ML Engineer</p>
+                        <div class="flex justify-center md:justify-start space-x-6 mb-8">
+                            <a href="https://github.com/lakshya811" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                            <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                            <a href="mailto:lakshya.kaushik811@gmail.com" class="text-gray-400 hover:text-cyan-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                        </div>
+                        <a href="./Resume-Lakshya_kaushik.pdf" download class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">Download Resume</a>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="py-20">
+                    <h2 class="text-4xl font-bold mb-8 text-center">About Me</h2>
+                    <div class="flex flex-col md:flex-row items-center gap-10 bg-gray-800 bg-opacity-50 p-8 rounded-lg">
+                        <div class="md:w-1/3 text-center">
+                            <img src="https://raw.githubusercontent.com/lakshya811/lakshya811.github.io/main/image_pp.jpeg" alt="Lakshya Kaushik" class="rounded-full w-64 h-64 mx-auto object-cover border-4 border-cyan-500 shadow-lg">
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="text-lg text-gray-300 leading-relaxed">AI & ML Engineer skilled in designing, training, and deploying production-grade models and LLM-driven applications. Strong foundations in Python (OOP), ML frameworks (TensorFlow, PyTorch, Scikit-learn, XGBoost), and scalable API development (FastAPI/Flask). Hands-on with RAG pipelines, vector databases (FAISS, Pinecone), and cloud-native deployments using Docker/Kubernetes on GCP/Azure. Experienced in MLOps (CI/CD, versioning, monitoring) and data processing with SQL, Pandas, and Spark.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Skills Section -->
+                <section id="skills" class="py-20">
+                    <h2 class="text-4xl font-bold mb-8 text-center">Technical Skills</h2>
+                    <div class="bg-gray-800 bg-opacity-50 p-8 rounded-lg flex flex-wrap justify-center gap-4">
+                        <span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Python</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">SQL</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">TensorFlow</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">PyTorch</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Scikit-learn</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">XGBoost</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">FastAPI</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Flask</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Streamlit</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">React</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Transformers</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">GPT</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">BERT</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">T5</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">RAG</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Prompt Engineering</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">FAISS</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Git</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Docker</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Kubernetes</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">CI/CD</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">MLflow</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Pandas</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">OpenCV</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">OCR</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">NLP</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">GCP</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">Azure</span><span class="bg-gray-700 text-cyan-400 text-sm font-medium px-4 py-2 rounded-full shadow-md">AWS</span>
+                    </div>
+                </section>
+
+                <!-- Experience Section -- FIXED -->
+                <section id="experience" class="py-20">
+                    <h2 class="text-4xl font-bold mb-12 text-center">Professional Experience</h2>
+                    <div class="relative max-w-4xl mx-auto">
+                        <!-- Vertical Timeline Line -->
+                        <div class="absolute h-full w-0.5 bg-gray-700 top-2 left-3 md:left-1/2 md:-translate-x-1/2"></div>
+                
+                        <!-- Job 1 -->
+                        <div class="relative mb-12">
+                            <!-- Dot -->
+                            <div class="absolute w-4 h-4 bg-cyan-500 rounded-full ring-8 ring-gray-900 top-1 left-3 -translate-x-1/2 md:left-1/2"></div>
+                            <!-- Content container -->
+                            <div class="pl-10 md:pl-0">
+                                <div class="md:flex">
+                                    <div class="md:w-1/2"></div> <!-- Spacer for right side content on desktop -->
+                                    <div class="md:w-1/2 md:pl-8">
+                                        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                                            <h3 class="text-xl font-bold text-cyan-400">AI Developer</h3>
+                                            <p class="text-md font-semibold mb-1">Geeky Bee AI Pvt Ltd</p>
+                                            <p class="text-sm text-gray-400 mb-3">Jan 2025 - Present | Pune, India</p>
+                                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                                <li>Automated Playwright + Scrapy workflows to streamline webform tasks, reducing manual effort by 70%.</li>
+                                                <li>Built and deployed sentiment-analysis FastAPI service (Dockerized) handling 10K+ reviews/month at 85% accuracy.</li>
+                                                <li>Developed RAG-based QA system combining FAISS vector DB with T5 and GPT for retrieval + generation.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Job 2 -->
+                        <div class="relative mb-12">
+                            <!-- Dot -->
+                             <div class="absolute w-4 h-4 bg-cyan-500 rounded-full ring-8 ring-gray-900 top-1 left-3 -translate-x-1/2 md:left-1/2"></div>
+                             <!-- Content container -->
+                             <div class="pl-10 md:pl-0">
+                                <div class="md:flex md:flex-row-reverse">
+                                    <div class="md:w-1/2"></div> <!-- Spacer for left side content on desktop -->
+                                    <div class="md:w-1/2 md:pr-8">
+                                        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                                            <h3 class="text-xl font-bold text-cyan-400">Research Intern</h3>
+                                            <p class="text-md font-semibold mb-1">Symbiosis Center for Applied AI</p>
+                                            <p class="text-sm text-gray-400 mb-3">Jul 2024 - Dec 2024 | Pune, India</p>
+                                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                                <li>Led multimodal fusion of retinal images + clinical data (5K+ samples), increasing AUC by 8%.</li>
+                                                <li>Benchmarked early, late, and hybrid fusion; recommended hybrid for deployment.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Job 3 -->
+                        <div class="relative">
+                             <!-- Dot -->
+                             <div class="absolute w-4 h-4 bg-cyan-500 rounded-full ring-8 ring-gray-900 top-1 left-3 -translate-x-1/2 md:left-1/2"></div>
+                             <!-- Content container -->
+                             <div class="pl-10 md:pl-0">
+                                <div class="md:flex">
+                                    <div class="md:w-1/2"></div> <!-- Spacer for right side content on desktop -->
+                                    <div class="md:w-1/2 md:pl-8">
+                                        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                                            <h3 class="text-xl font-bold text-cyan-400">IT Consultant Intern</h3>
+                                            <p class="text-md font-semibold mb-1">Anyology Speciality Services Pvt Ltd</p>
+                                            <p class="text-sm text-gray-400 mb-3">Aug 2023 - Nov 2023 | Remote</p>
+                                            <ul class="list-disc list-inside text-gray-300 space-y-1">
+                                                <li>Led team to build GCP-hosted WordPress infra, saving $1000+/year in hosting costs.</li>
+                                                <li>Researched cloud migration strategies and contributed to IT roadmap.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Projects Section -->
+                <section id="projects" class="py-20">
+                    <h2 class="text-4xl font-bold mb-8 text-center">Projects</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff98c872d81b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gemini API Wrapper" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <a href="https://github.com/lakshya811/gen_wrapper" target="_blank" rel="noopener noreferrer">
+                                    <h3 class="text-2xl font-bold text-cyan-400 mb-2 hover:underline">Gen Ai API Wrapper</h3>
+                                </a>
+                                <p class="text-gray-300 mb-4 flex-grow">A versatile Python wrapper to streamline interactions with the API, making it easier to integrate generative AI features into applications.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">Python</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">Gen AI API</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">API Wrapper</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Review Sentiment Analysis" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-cyan-400 mb-2">Review Sentiment Analysis</h3>
+                                <p class="text-gray-300 mb-4 flex-grow">Deployed a BERT-based FastAPI microservice (Docker) for sentiment classification. Integrated CI/CD with GitHub Actions; achieved 85% accuracy.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">BERT</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">FastAPI</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550592704-6c76defa9985?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Book Shopping Website Scraper" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-cyan-400 mb-2">Book Shopping Website Scraper</h3>
+                                <p class="text-gray-300 mb-4 flex-grow">Built Scrapy pipeline integrated with Pandas + SQL for dataset creation. Used in LLM pre-training workflows.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">Scrapy</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">Pandas</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1627319240366-a36c1e956461?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AgNOR Detection" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-cyan-400 mb-2">AgNOR Detection</h3>
+                                <p class="text-gray-300 mb-4 flex-grow">Designed CNNs with PyTorch + TensorFlow for medical imaging. Improved diagnostic accuracy using OpenCV preprocessing.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">PyTorch</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">TensorFlow</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1585241936939-be4099591252?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="IntelliShots - Short News App" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-cyan-400 mb-2">IntelliShots - Short News App</h3>
+                                <p class="text-gray-300 mb-4 flex-grow">Developed T5/GPT-powered news summarizer with retrieval-augmented features. Built React.js + Node.js frontend.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">T5</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">GPT</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">React.js</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg shadow-lg flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583344654368-87b64a2f3d91?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="RAG-based QA System" class="w-full h-48 object-cover">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-cyan-400 mb-2">RAG-based QA System</h3>
+                                <p class="text-gray-300 mb-4 flex-grow">Engineered document QA pipeline using FAISS + T5+GPT-2. Implemented embeddings search and generative answering.</p>
+                                <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">RAG</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">FAISS</span>
+                                    <span class="bg-gray-700 text-xs text-cyan-300 px-2 py-1 rounded-md">T5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="py-20">
+                    <h2 class="text-4xl font-bold mb-8 text-center">Education</h2>
+                    <div class="max-w-3xl mx-auto space-y-8">
+                        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-cyan-400">Symbiosis Institute of Technology</h3>
+                            <p class="text-md font-semibold mb-1">B.Tech in Artificial Intelligence and Machine Learning</p>
+                            <p class="text-sm text-gray-400">Sep 2021 - Jun 2025 | Pune, India</p>
+                        </div>
+                        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-cyan-400">Technische Hochschule Ingolstadt</h3>
+                            <p class="text-md font-semibold mb-1">Exchange Semester</p>
+                            <p class="text-sm text-gray-400">Mar 2024 - Sep 2024 | Ingolstadt, Germany</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="py-20">
+                    <h2 class="text-4xl font-bold mb-8 text-center">Get In Touch</h2>
+                    <div class="max-w-xl mx-auto text-center bg-gray-800 bg-opacity-50 p-8 rounded-lg">
+                        <p class="text-lg text-gray-300 mb-8">I'm currently open to new opportunities. If you have a project in mind or just want to connect, feel free to reach out.</p>
+                         <div class="flex justify-center items-center space-x-4 mb-4 text-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block text-cyan-400"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:lakshya.kaushik811@gmail.com" class="text-gray-300 hover:text-cyan-400">lakshya.kaushik811@gmail.com</a>
+                        </div>
+                        <div class="flex justify-center items-center space-x-4 text-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block text-cyan-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <a href="tel:+919456007616" class="text-gray-300 hover:text-cyan-400">+91 9456007616</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="text-center py-6 border-t border-gray-700">
+                <p>&copy; 2024 Lakshya Kaushik. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('block');
+                menuCloseIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('block');
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileNavLinks = mobileMenu.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuOpenIcon.classList.add('block');
+                    menuCloseIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('block');
+                });
+            });
+
+            // Intersection Observer for scrollspy
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4,
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-cyan-400');
+                            link.classList.add('text-gray-300');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('text-cyan-400');
+                                link.classList.remove('text-gray-300');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
             background: #06b6d4; /* cyan-500 */
             border-radius: 4px;
         }
