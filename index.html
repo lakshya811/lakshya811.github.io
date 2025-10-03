@@ -43,6 +43,9 @@
     ::-webkit-scrollbar-track { background: #0b1220; }
     ::-webkit-scrollbar-thumb { background: #0ea5b5; border-radius: 8px; }
     ::-webkit-scrollbar-thumb:hover { background: #0891b2; }
+  .icon-btn{display:grid;place-items:center;height:40px;width:40px;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#e5e7eb;transition:transform .15s ease, background .15s ease}
+    .icon-btn:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+    .icon-btn svg{height:20px;width:20px;display:block}
   </style>
 </head>
 <body class="bg-gray-950 text-white font-sans antialiased">
@@ -95,9 +98,9 @@
     <section id="home" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
         <div class="reveal">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
             <span class="block text-white">Lakshya Kaushik</span>
-            <span class="block bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-clip-text text-transparent">AI & ML Engineer</span>
+            <span class="block bg-gradient-to-r$1text-transparent relative z-[1] pb-1">AI & ML Engineer</span>
           </h1>
           <p class="mt-6 text-lg text-white/70 max-w-xl">I build production-grade ML and LLM apps: RAG systems, vector search, and scalable APIs on cloud-native stacks. Strong in Python, PyTorch/TensorFlow, and MLOps.</p>
           <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -110,15 +113,15 @@
               View Projects
             </a>
           </div>
-          <div class="mt-8 flex gap-5">
-            <a href="https://github.com/lakshya811" target="_blank" rel="noopener" class="text-white/70 hover:text-white" aria-label="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2a10 10 0 00-3.162 19.492c.5.092.683-.217.683-.482 0-.237-.009-.866-.013-1.701-2.78.604-3.366-1.34-3.366-1.34-.454-1.153-1.11-1.461-1.11-1.461-.908-.62.069-.607.069-.607 1.004.071 1.533 1.031 1.533 1.031.892 1.528 2.341 1.087 2.91.832.091-.647.35-1.086.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.748-1.025 2.748-1.025.547 1.378.203 2.397.1 2.65.64.7 1.028 1.592 1.028 2.683 0 3.842-2.338 4.687-4.566 4.935.36.31.68.919.68 1.853 0 1.337-.012 2.416-.012 2.744 0 .268.18.58.688.481A10 10 0 0012 2z" clip-rule="evenodd"/></svg>
+          <div class="mt-8 flex gap-3">
+            <a href="https://github.com/lakshya811" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a10 10 0 00-3.162 19.492c.5.092.683-.217.683-.482 0-.237-.009-.866-.013-1.701-2.78.604-3.366-1.34-3.366-1.34-.454-1.153-1.11-1.461-1.11-1.461-.908-.62.069-.607.069-.607 1.004.071 1.533 1.031 1.533 1.031.892 1.528 2.341 1.087 2.91.832.091-.647.35-1.086.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.748-1.025 2.748-1.025.547 1.378.203 2.397.1 2.65.64.7 1.028 1.592 1.028 2.683 0 3.842-2.338 4.687-4.566 4.935.36.31.68.919.68 1.853 0 1.337-.012 2.416-.012 2.744 0 .268.18.58.688.481A10 10 0 0012 2z" clip-rule="evenodd"/></svg>
             </a>
-            <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" rel="noopener" class="text-white/70 hover:text-white" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5v-6.74c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V24h-5V8.98z"/></svg>
+            <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5v-6.74c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V24h-5V8.98z"/></svg>
             </a>
-            <a href="mailto:lakshya.kaushik811@gmail.com" class="text-white/70 hover:text-white" aria-label="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13L2 6h20l-10 7z"/><path d="M2 8l10 7 10-7v10H2z"/></svg>
+            <a href="mailto:lakshya.kaushik811@gmail.com" class="icon-btn" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 13L2 6h20l-10 7z"/><path d="M2 8l10 7 10-7v10H2z"/></svg>
             </a>
           </div>
         </div>
@@ -138,7 +141,7 @@
           <h2 class="text-3xl font-bold">About Me</h2>
           <p class="mt-4 text-white/80 leading-relaxed">AI & ML Engineer skilled in designing, training, and deploying production-grade models and LLM-driven applications. Strong foundations in Python (OOP), ML frameworks (TensorFlow, PyTorch, Scikit-learn, XGBoost), and scalable API development (FastAPI/Flask). Hands-on with RAG pipelines, vector databases (FAISS, Pinecone), and cloud-native deployments using Docker/Kubernetes on GCP/Azure. Experienced in MLOps (CI/CD, versioning, monitoring) and data processing with SQL, Pandas, and Spark.</p>
         </div>
-        <div class="bg-gradient-to-b from-white/10 to-transparent border border-white/10 rounded-2xl p-6">
+        <div class="bg-gradient-to-b from-white/10 to-transparent border border-white/10 rounded-2xl p-6 lg:sticky lg:top-28 self-start">
           <p class="text-sm uppercase tracking-widest text-white/60">Currently</p>
           <p class="mt-2 font-semibold">AI Developer @ Geeky Bee AI Pvt Ltd</p>
           <p class="text-white/60">Jan 2025 – Present · Pune, India</p>
@@ -224,7 +227,7 @@
       <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <!-- Card component template repeated -->
         <a href="https://github.com/lakshya811/gen_wrapper" target="_blank" rel="noopener" class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1555949963-ff98c872d81b?q=80&w=1200&auto=format&fit=crop" alt="Gen AI API Wrapper" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">Gen AI API Wrapper</h3>
             <p class="proj-text">Versatile Python wrapper to streamline interactions with generative AI APIs for easier app integration.</p>
@@ -233,7 +236,7 @@
         </a>
 
         <div class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop" alt="Review Sentiment Analysis" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">Review Sentiment Analysis</h3>
             <p class="proj-text">BERT-based FastAPI microservice (Docker) for sentiment classification; CI/CD via GitHub Actions; ~85% accuracy.</p>
@@ -242,7 +245,7 @@
         </div>
 
         <div class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1550592704-6c76defa9985?q=80&w=1200&auto=format&fit=crop" alt="Book Scraper" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">Book Shopping Scraper</h3>
             <p class="proj-text">Scrapy pipeline with Pandas + SQL for dataset creation used in LLM pre-training workflows.</p>
@@ -251,7 +254,7 @@
         </div>
 
         <div class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1627319240366-a36c1e956461?q=80&w=1200&auto=format&fit=crop" alt="AgNOR Detection" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">AgNOR Detection</h3>
             <p class="proj-text">CNNs with PyTorch/TensorFlow for medical imaging; OpenCV preprocessing improved diagnostic accuracy.</p>
@@ -260,7 +263,7 @@
         </div>
 
         <div class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1585241936939-be4099591252?q=80&w=1200&auto=format&fit=crop" alt="IntelliShots" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">IntelliShots – Short News</h3>
             <p class="proj-text">T5/GPT-powered news summarizer with retrieval-augmentation. React + Node frontend.</p>
@@ -269,7 +272,7 @@
         </div>
 
         <div class="proj">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1583344654368-87b64a2f3d91?q=80&w=1200&auto=format&fit=crop" alt="RAG QA" />
+          <img class="proj-img"$1 loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/ffffff&text=Project+Preview';" />
           <div class="proj-body">
             <h3 class="proj-title">RAG-based QA System</h3>
             <p class="proj-text">Document QA pipeline using FAISS + T5/GPT-2 with embedding search and generative answers.</p>
@@ -336,7 +339,7 @@
     @media (min-width:768px){.timeline-dot{left:50%;transform:translateX(-50%);}}
     .proj{display:flex;flex-direction:column;overflow:hidden;border-radius:1rem;background:rgba(17,24,39,.6);border:1px solid rgba(255,255,255,.08);transition:transform .25s ease, box-shadow .25s ease}
     .proj:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    .proj-img{width:100%;height:12rem;object-fit:cover}
+    .proj-img{width:100%;height:12rem;object-fit:cover;display:block;background:#0b1220;}
     .proj-body{padding:1rem}
     .proj-title{font-weight:800;color:#67e8f9;font-size:1.125rem}
     .proj-text{color:rgba(255,255,255,.8);margin-top:.375rem}
