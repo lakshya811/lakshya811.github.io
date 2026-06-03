@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Lakshya Kaushik — AI Engineer specializing in computer vision, LLM pipelines, and production AI systems deployed across US, Philippines and Egypt.">
-<title>Lakshya Kaushik | AI Engineer</title>
+<title>Lakshya Kaushik | AI Engineer · Remote</title>
+<meta name="description" content="AI Engineer building production AI systems — RAG pipelines, multi-agent LLM workflows, computer vision, and document intelligence with evaluation harnesses and observability. Deployed across US, Philippines and Egypt. Open to remote roles with EU & US companies.">
+
+<!-- Open Graph for LinkedIn/Twitter previews -->
+<meta property="og:title" content="Lakshya Kaushik — AI Engineer">
+<meta property="og:description" content="Building production AI systems deployed across US, Philippines and Egypt. Open to remote roles with EU & US companies.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.lakshyakaushik.me">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='60' font-weight='800' text-anchor='middle' fill='%23e8ff47' font-family='sans-serif'%3ELK%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -21,7 +31,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -33,7 +42,6 @@
     overflow-x: hidden;
   }
 
-  /* NOISE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -73,6 +81,7 @@
     display: flex;
     gap: 36px;
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
@@ -85,6 +94,16 @@
   }
 
   .nav-links a:hover { color: var(--accent); }
+
+  .nav-resume {
+    background: var(--accent);
+    color: #000 !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .nav-resume:hover { background: #fff !important; color: #000 !important; }
 
   /* HERO */
   .hero {
@@ -159,20 +178,53 @@
     font-size: clamp(48px, 7vw, 96px);
     line-height: 0.95;
     letter-spacing: -3px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     animation: fadeUp 0.6s ease 0.1s both;
   }
 
   .hero h1 span { color: var(--accent); }
 
+  .hero-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--accent2);
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease 0.15s both;
+    letter-spacing: 0.05em;
+  }
+
   .hero-sub {
     font-size: 18px;
     color: var(--text-dim);
-    max-width: 560px;
+    max-width: 600px;
     line-height: 1.7;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     font-weight: 300;
     animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease 0.25s both;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .hero-stats {
@@ -180,9 +232,8 @@
     gap: 48px;
     margin-bottom: 48px;
     animation: fadeUp 0.6s ease 0.3s both;
+    flex-wrap: wrap;
   }
-
-  .stat-item { }
 
   .stat-number {
     font-family: 'Syne', sans-serif;
@@ -295,11 +346,6 @@
   }
 
   /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    gap: 2px;
-  }
-
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -478,11 +524,215 @@
     flex-shrink: 0;
   }
 
-  /* DIVIDER */
   .section-divider {
     border: none;
     border-top: 1px solid var(--border);
     margin: 0 48px;
+  }
+
+  /* CASE STUDY EXPANDABLE */
+  .case-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 40px 4px;
+    background: rgba(71,184,255,0.06);
+    border: 1px solid rgba(71,184,255,0.25);
+    color: var(--accent2);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .case-toggle:hover { background: rgba(71,184,255,0.12); }
+  .case-toggle .chev { transition: transform 0.3s; }
+  .case-toggle.open .chev { transform: rotate(180deg); }
+
+  .case-study {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin: 0 40px;
+  }
+  .case-study.open { max-height: 6000px; }
+
+  .case-inner {
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent2);
+    border-radius: 0 0 12px 12px;
+    background: var(--surface);
+    padding: 40px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .case-block { margin-bottom: 36px; }
+  .case-block:last-child { margin-bottom: 0; }
+
+  .case-block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .case-block-label::before {
+    content: '';
+    width: 18px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .case-block h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .case-block p {
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.75;
+    max-width: 760px;
+    margin-bottom: 10px;
+  }
+
+  .role-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .role-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .role-chip b { color: var(--accent); font-weight: 600; }
+  .role-chip.muted b { color: var(--text-muted); }
+
+  .arch-diagram {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 24px;
+    margin: 8px 0;
+    overflow-x: auto;
+  }
+  .arch-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    min-width: min-content;
+  }
+  .arch-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 130px;
+  }
+  .arch-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .arch-box.mine {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232,255,71,0.04);
+  }
+  .arch-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .arch-conn {
+    color: var(--accent2);
+    font-size: 18px;
+    padding: 0 4px;
+    align-self: flex-start;
+    margin-top: 12px;
+    flex-shrink: 0;
+  }
+  .arch-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; }
+  .legend-swatch { width: 14px; height: 10px; border-radius: 3px; border: 1px solid; }
+
+  .tradeoff {
+    border-left: 2px solid var(--border);
+    padding: 4px 0 4px 20px;
+    margin-bottom: 18px;
+  }
+  .tradeoff:last-child { margin-bottom: 0; }
+  .tradeoff .q {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .tradeoff .a {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .tradeoff .a b { color: var(--accent2); font-weight: 500; }
+
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .lesson-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .lesson-card .lnum {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .lesson-card p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin: 0; }
+
+  @media (max-width: 768px) {
+    .case-toggle, .case-study { margin-left: 0; margin-right: 0; }
+    .case-inner { padding: 28px 20px; }
+    .lesson-grid { grid-template-columns: 1fr; }
+    .case-block p { font-size: 14px; }
   }
 
   /* SKILLS */
@@ -580,6 +830,57 @@
     font-size: 12px;
   }
 
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    transition: border-color 0.3s;
+  }
+
+  .edu-card:hover { border-color: rgba(232,255,71,0.2); }
+
+  .edu-card.highlight {
+    border-color: rgba(71,184,255,0.25);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(71,184,255,0.03) 100%);
+  }
+
+  .edu-flag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .edu-school {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .edu-degree {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .edu-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
   /* CONTACT */
   .contact-section {
     background: var(--surface);
@@ -609,15 +910,17 @@
     font-size: clamp(36px, 5vw, 64px);
     letter-spacing: -2px;
     margin-bottom: 16px;
+    line-height: 1.05;
   }
 
   .contact-sub {
     color: var(--text-dim);
     font-size: 16px;
     margin-bottom: 40px;
-    max-width: 480px;
+    max-width: 520px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.7;
   }
 
   .contact-links {
@@ -647,7 +950,6 @@
     color: var(--accent);
   }
 
-  /* FOOTER */
   footer {
     text-align: center;
     padding: 32px 48px;
@@ -657,7 +959,6 @@
     color: var(--text-muted);
   }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -674,10 +975,10 @@
     transform: translateY(0);
   }
 
-  /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
-    .nav-links { display: none; }
+    .nav-links { gap: 16px; }
+    .nav-links li:not(:last-child) { display: none; }
     section { padding: 60px 24px; }
     .hero { padding: 100px 24px 60px; }
     .hero h1 { font-size: 48px; letter-spacing: -2px; }
@@ -686,6 +987,7 @@
     .project-header { flex-direction: column; }
     .project-body { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .edu-grid { grid-template-columns: 1fr; }
     .contact-section { padding: 40px 24px; }
     .section-divider { margin: 0 24px; }
   }
@@ -693,7 +995,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">LK</a>
   <ul class="nav-links">
@@ -701,6 +1002,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://raw.githubusercontent.com/lakshya811/lakshya811.github.io/main/Resume-Lakshya_Kaushik.pdf" target="_blank" class="nav-resume">Resume ↓</a></li>
   </ul>
 </nav>
 
@@ -710,22 +1012,31 @@
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-tag">Open to Remote · EU & US Companies</div>
+    <div class="hero-role">AI ENGINEER · COMPUTER VISION + LLM SYSTEMS</div>
     <h1>Lakshya<br><span>Kaushik</span></h1>
-    <p class="hero-sub">AI Engineer building production systems — computer vision pipelines, LLM agents, and document intelligence — deployed across three continents.</p>
+    <p class="hero-sub">I build production AI systems that companies pay to deploy — computer vision pipelines, multi-agent LLM workflows, and document intelligence. Shipped across three continents.</p>
+
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-dot"></span>India · IST (UTC+5:30)</div>
+      <div class="meta-item"><span class="meta-dot"></span>Available 4-5h overlap with CET</div>
+      <div class="meta-item"><span class="meta-dot"></span>German exchange · THI Ingolstadt</div>
+    </div>
+
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-number">4+</div>
-        <div class="stat-label">Production<br>Systems Shipped</div>
+        <div class="stat-number" id="stat-projects">6</div>
+        <div class="stat-label">Production AI<br>systems shipped</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">3</div>
-        <div class="stat-label">International<br>Markets</div>
+        <div class="stat-number" id="stat-markets">3</div>
+        <div class="stat-label">International<br>client markets</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">90%</div>
-        <div class="stat-label">Workflow<br>Automation</div>
+        <div class="stat-number" id="stat-exp">0</div>
+        <div class="stat-label">Hands-on AI<br>engineering</div>
       </div>
     </div>
+
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">View Projects</a>
       <a href="mailto:lakshya.kaushik811@gmail.com" class="btn-secondary">Get in Touch →</a>
@@ -734,7 +1045,7 @@
   <div class="hero-markets">
     <div class="market-tag"><span class="market-dot" style="background:#47ff8a"></span>Egypt · Healthcare AI</div>
     <div class="market-tag"><span class="market-dot" style="background:#47b8ff"></span>Philippines · Computer Vision</div>
-    <div class="market-tag"><span class="market-dot" style="background:#e8ff47"></span>United States · Traffic AI</div>
+    <div class="market-tag"><span class="market-dot" style="background:#e8ff47"></span>United States · Infrastructure AI</div>
     <div class="market-tag"><span class="market-dot" style="background:#ff8a47"></span>Multi-market · Document AI</div>
   </div>
 </div>
@@ -753,11 +1064,11 @@
         <div class="project-index">01 / Healthcare · Egypt Market</div>
         <h3 class="project-title">Arabic Insurance Claims Automation</h3>
         <div class="project-client">↗ Deployed for Egyptian healthcare insurance provider</div>
-        <p class="project-desc">End-to-end AI pipeline that reads Arabic insurance cards, identity documents, and hospital bills — then automatically matches patient data, verifies coverage, and submits structured claims. Eliminated the need for manual claims processing staff.</p>
+        <p class="project-desc">End-to-end AI pipeline that reads Arabic insurance cards, identity documents, and hospital bills — then automatically matches patient data, verifies coverage, and submits structured claims. Replaced a fully manual claims processing workflow.</p>
       </div>
       <div class="project-impact">
-        <div class="impact-number">90%</div>
-        <div class="impact-label">Reduction in manual<br>processing time</div>
+        <div class="impact-number">~90%</div>
+        <div class="impact-label">Manual claims<br>processing eliminated</div>
       </div>
     </div>
     <div class="project-body">
@@ -767,8 +1078,8 @@
           <li>Arabic OCR with mixed numeral systems (Arabic-Indic digits)</li>
           <li>Female patient name matching — cards show husband's name, not patient's</li>
           <li>Employer-issued vs personal insurance card reconciliation</li>
-          <li>Multi-document cross-validation (card + ID + hospital bill)</li>
-          <li>Playwright automation → JSON API migration for form submission</li>
+          <li>Cross-document validation (insurance card + national ID + hospital bill)</li>
+          <li>Playwright form automation → migrated to structured JSON API submission</li>
         </ul>
       </div>
       <div>
@@ -818,11 +1129,11 @@
         <div class="project-index">02 / Infrastructure · United States Market</div>
         <h3 class="project-title">Traffic Management Automation Platform</h3>
         <div class="project-client">↗ Deployed for US-based traffic engineering company</div>
-        <p class="project-desc">Full automation of a previously manual traffic planning workflow — from GPS coordinates to a signed-off AutoCAD traffic management plan. The system generates regulatory-compliant road work plans with cone counts, signage placement, and staffing requirements based on state-specific MUTCD guidelines.</p>
+        <p class="project-desc">Full automation of a previously manual traffic planning workflow — from GPS coordinates to a signed-off AutoCAD traffic management plan. The system generates MUTCD-compliant road work plans with cone counts, signage placement, and staffing requirements based on state-specific guidelines.</p>
       </div>
       <div class="project-impact">
-        <div class="impact-number">~10x</div>
-        <div class="impact-label">Faster plan<br>generation vs manual</div>
+        <div class="impact-number">End-to-end</div>
+        <div class="impact-label">Coordinates →<br>signed traffic plan</div>
       </div>
     </div>
     <div class="project-body">
@@ -833,7 +1144,7 @@
           <li>Fine-tuned CV model detecting lanes, turn signals, bike tracks, speed markings, dividers</li>
           <li>SAM 3 (Meta) integration for prompt-based road feature segmentation</li>
           <li>Automated DXF/DWG file generation with road signs and curve geometry</li>
-          <li>Multi-agent LLM (Gemini + Google Grounding) for all-US-state regulatory lookup</li>
+          <li>Multi-agent LLM (Gemini + Google Grounding Search) for all 50 US state regulations</li>
           <li>Final plan output: cone count, signage positions, staff requirements per state law</li>
         </ul>
       </div>
@@ -843,7 +1154,7 @@
           <span class="tech-tag">Python</span>
           <span class="tech-tag">Google Maps API</span>
           <span class="tech-tag">SAM 3 (Meta)</span>
-          <span class="tech-tag">Custom YOLO</span>
+          <span class="tech-tag">Custom CV Model</span>
           <span class="tech-tag">Gemini</span>
           <span class="tech-tag">Google Grounding</span>
           <span class="tech-tag">AutoCAD DXF/DWG</span>
@@ -879,6 +1190,146 @@
     </div>
   </div>
 
+  <!-- ── TRAFFIC CASE STUDY (EXPANDABLE) ── -->
+  <button class="case-toggle" id="caseToggle" onclick="toggleCase()">
+    <span>Read the full engineering case study</span>
+    <span class="chev">▾</span>
+  </button>
+  <div class="case-study" id="caseStudy">
+    <div class="case-inner">
+
+      <!-- MY ROLE -->
+      <div class="case-block">
+        <div class="case-block-label">My Role</div>
+        <h4>What I owned on this project</h4>
+        <div class="role-banner">
+          <div class="role-chip"><b>Led</b> &nbsp;— Base Map Generation module</div>
+          <div class="role-chip"><b>Built</b> &nbsp;— State regulation agent bots</div>
+          <div class="role-chip muted"><b>Team</b> &nbsp;— Model fine-tuning &amp; planning engine</div>
+        </div>
+        <p>I led the base map module — the pipeline that turns raw GPS coordinates into a clean, scaled, machine-readable road map — and independently built the agent system that pulls state-specific traffic regulations. The fine-tuned detection model and the downstream planning engine were owned by other engineers on the team; I worked closely with both, including helping prepare annotation guidance for the model training.</p>
+      </div>
+
+      <!-- PROBLEM -->
+      <div class="case-block">
+        <div class="case-block-label">The Problem</div>
+        <h4>Traffic plans were drawn by hand, one road at a time</h4>
+        <p>A US traffic engineering company produced temporary traffic control plans manually — an engineer studied a road, traced its geometry into AutoCAD, looked up the relevant state highway regulations, and worked out how many cones, signs and staff a job needed. Each plan took hours of skilled work and the process didn't scale with their order volume.</p>
+        <p>The goal: take a location, automatically reconstruct the road, and generate a regulation-compliant draft plan an engineer only has to review — not build from scratch.</p>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="case-block">
+        <div class="case-block-label">Architecture</div>
+        <h4>Coordinates → reviewed traffic plan</h4>
+        <div class="arch-diagram">
+          <div class="arch-row">
+            <div class="arch-stage">
+              <div class="arch-box mine">GPS Coords</div>
+              <div class="arch-sub">lat / long input</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box mine">Satellite Tiling</div>
+              <div class="arch-sub">Maps + Roads API<br>stitched to 7K</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box">Detection Model</div>
+              <div class="arch-sub">fine-tuned CV<br>+ SAM 3</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box mine">Vector Build</div>
+              <div class="arch-sub">lanes → DXF/DWG<br>signs placed</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box mine">Reg Agent</div>
+              <div class="arch-sub">Gemini + grounding<br>per-state rules</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box">Plan Engine</div>
+              <div class="arch-sub">cones · signs · staff</div>
+            </div>
+            <div class="arch-conn">→</div>
+            <div class="arch-stage">
+              <div class="arch-box">Engineer Review</div>
+              <div class="arch-sub">human checkpoint</div>
+            </div>
+          </div>
+          <div class="arch-legend">
+            <div class="legend-item"><span class="legend-swatch" style="border-color:var(--accent);background:rgba(232,255,71,0.04)"></span>Modules I led / built</div>
+            <div class="legend-item"><span class="legend-swatch" style="border-color:var(--border);background:var(--surface)"></span>Team-owned modules</div>
+          </div>
+        </div>
+        <p>Simplified intentionally — this shows the system's logic, not the client's internal infrastructure.</p>
+      </div>
+
+      <!-- CHALLENGES I SOLVED -->
+      <div class="case-block">
+        <div class="case-block-label">Engineering Challenges</div>
+        <h4>The hard parts of the base map module</h4>
+        <p><b style="color:var(--text)">Real-world scale accuracy.</b> A satellite snapshot has no inherent sense of metres. I pulled tiles at a fixed zoom and known ground-sampling distance, then stitched them so the final ~7K image had a consistent, calculable real-world scale — without that, every downstream measurement (lane widths, curve radii) would be wrong.</p>
+        <p><b style="color:var(--text)">Resolution vs coverage.</b> One API call couldn't give both a wide enough road span and the detail the model needed. I built tiling logic that captured overlapping high-zoom sections and merged them into a single seamless high-resolution canvas.</p>
+        <p><b style="color:var(--text)">Vector fidelity.</b> Model output (coloured masks for lanes, dashes, turn arrows, bike lanes, dividers) had to become clean AutoCAD geometry. I handled the conversion into DXF/DWG so curves and lane markings landed as proper engineering vectors, not pixel blobs.</p>
+        <p><b style="color:var(--text)">50 states, 50 rulebooks.</b> Traffic control rules differ by state and road type. Rather than hard-code them, I built an agent grounded to official state sources that returns a fixed-format answer set (work hours, permits, emergency contacts, staffing) for any given address.</p>
+      </div>
+
+      <!-- TRADEOFFS -->
+      <div class="case-block">
+        <div class="case-block-label">Engineering Tradeoffs</div>
+        <h4>Decisions and why I made them</h4>
+
+        <div class="tradeoff">
+          <div class="q">Why a grounded LLM agent for regulations, not a hard-coded rules database?</div>
+          <div class="a">A static database of 50 states' rules would be accurate the day it shipped and stale soon after — and a nightmare to maintain. <b>Grounding the agent to official state sources</b> meant rules stayed current and the system extended to new states without a code change. The tradeoff: I had to constrain it to a fixed source list and fixed output format to keep answers reliable and prevent hallucination.</div>
+        </div>
+
+        <div class="tradeoff">
+          <div class="q">Why SAM 3 alongside a fine-tuned model instead of one model?</div>
+          <div class="a">The fine-tuned model was strong on the specific markings it was trained on; <b>SAM 3 added prompt-based segmentation</b> for features that were rarer or harder to pre-label. Using both gave broader coverage than forcing a single model to do everything — at the cost of a heavier pipeline, which was acceptable because this runs as a batch job, not real-time.</div>
+        </div>
+
+        <div class="tradeoff">
+          <div class="q">Why stitch tiles to 7K instead of using one lower-res image?</div>
+          <div class="a">Lane markings and dashed lines are tiny relative to a road. A single low-res pull lost them entirely. <b>Higher resolution dramatically improved detection recall</b>; the cost was more API calls and stitching complexity, which I optimised with controlled overlap.</div>
+        </div>
+
+        <div class="tradeoff">
+          <div class="q">Why keep a human engineer in the loop at all?</div>
+          <div class="a">The system drafts; it doesn't sign off. Traffic plans carry legal and safety weight, so <b>a mandatory engineer review checkpoint</b> was a deliberate design choice — automation for the 90% of effort, human judgement for the accountability.</div>
+        </div>
+      </div>
+
+      <!-- LESSONS -->
+      <div class="case-block">
+        <div class="case-block-label">Lessons Learned</div>
+        <h4>What I'd carry into the next system</h4>
+        <div class="lesson-grid">
+          <div class="lesson-card">
+            <div class="lnum">01</div>
+            <p>Grounding beats hard-coding for anything that changes over time. The maintenance saving compounds.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="lnum">02</div>
+            <p>For CV, input resolution often matters more than model choice. Fixing the image pipeline beat tuning the model.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="lnum">03</div>
+            <p>Constraining an LLM to fixed sources + fixed output format is what makes agentic output trustworthy in production.</p>
+          </div>
+          <div class="lesson-card">
+            <div class="lnum">04</div>
+            <p>Design the human checkpoint deliberately. Knowing where <i>not</i> to automate is part of the engineering.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- PROJECT 3: PDF -->
   <div class="project-card fade-up">
     <div class="project-header">
@@ -889,8 +1340,8 @@
         <p class="project-desc">Side-by-side PDF comparison tool that uses AI to classify and highlight every difference between two contract versions — distinguishing structural changes, clause modifications, and minor corrections. Gives legal and procurement teams instant clarity on what changed between drafts.</p>
       </div>
       <div class="project-impact">
-        <div class="impact-number">3x</div>
-        <div class="impact-label">Change types<br>detected & classified</div>
+        <div class="impact-number">3-tier</div>
+        <div class="impact-label">Change classification<br>system</div>
       </div>
     </div>
     <div class="project-body">
@@ -917,7 +1368,7 @@
     </div>
   </div>
 
-  <!-- PROJECT 4: CONTRACT ANALYSIS -->
+  <!-- PROJECT 4: CONSTRUCTION -->
   <div class="project-card fade-up">
     <div class="project-header">
       <div class="project-meta">
@@ -928,7 +1379,7 @@
       </div>
       <div class="project-impact">
         <div class="impact-number">Auto</div>
-        <div class="impact-label">Surface area<br>calculation from plans</div>
+        <div class="impact-label">Surface area<br>from blueprints</div>
       </div>
     </div>
     <div class="project-body">
@@ -955,6 +1406,44 @@
     </div>
   </div>
 
+  <!-- PROJECT 5: CCTV -->
+  <div class="project-card fade-up">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-index">05 / Surveillance · Philippines Market</div>
+        <h3 class="project-title">CCTV Computer Vision System</h3>
+        <div class="project-client">↗ Deployed for Philippines-based security operator</div>
+        <p class="project-desc">Real-time CCTV intelligence pipeline running on edge infrastructure — loitering detection, trespassing alerts, and continuous vehicle counting. Built for 24/7 operation across multiple camera feeds.</p>
+      </div>
+      <div class="project-impact">
+        <div class="impact-number">Live</div>
+        <div class="impact-label">Real-time<br>edge inference</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div>
+        <div class="project-section-title">Detection Capabilities</div>
+        <ul class="challenge-list">
+          <li>Loitering detection with configurable dwell-time thresholds</li>
+          <li>Restricted area trespassing alerts</li>
+          <li>Continuous vehicle counting across multiple camera feeds</li>
+          <li>Real-time alert pipeline for operator dashboards</li>
+        </ul>
+      </div>
+      <div>
+        <div class="project-section-title">Tech Stack</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">YOLO</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Object Tracking</span>
+          <span class="tech-tag">RTSP Streams</span>
+          <span class="tech-tag">FastAPI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <hr class="section-divider">
@@ -965,24 +1454,38 @@
   <h2 class="section-title">Technical Stack</h2>
   <div class="skills-grid">
     <div class="skill-category fade-up">
-      <div class="skill-cat-title">AI & ML</div>
+      <div class="skill-cat-title">AI & ML — Core Strength</div>
       <div class="skill-items">
         <span class="skill-item">LLMs</span>
         <span class="skill-item">RAG</span>
+        <span class="skill-item">Multi-Agent Systems</span>
         <span class="skill-item">Computer Vision</span>
-        <span class="skill-item">OCR</span>
-        <span class="skill-item">NLP</span>
+        <span class="skill-item">OCR Pipelines</span>
         <span class="skill-item">Fine-tuning</span>
-        <span class="skill-item">Multi-Agent</span>
         <span class="skill-item">SAM 3</span>
         <span class="skill-item">YOLO</span>
+        <span class="skill-item">Prompt Engineering</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Evaluation & Production</div>
+      <div class="skill-items">
+        <span class="skill-item">LLM-as-Judge</span>
+        <span class="skill-item">Eval Harnesses</span>
+        <span class="skill-item">Observability</span>
+        <span class="skill-item">Cost Optimization</span>
+        <span class="skill-item">Model Routing</span>
+        <span class="skill-item">Structured Outputs</span>
+        <span class="skill-item">Guardrails</span>
+        <span class="skill-item">MCP Integration</span>
       </div>
     </div>
     <div class="skill-category fade-up">
       <div class="skill-cat-title">Models & APIs</div>
       <div class="skill-items">
-        <span class="skill-item">OpenAI GPT-4o</span>
+        <span class="skill-item">OpenAI GPT-4o / 5</span>
         <span class="skill-item">Gemini</span>
+        <span class="skill-item">Claude</span>
         <span class="skill-item">Azure OCR</span>
         <span class="skill-item">Google Grounding</span>
         <span class="skill-item">Gemini File API</span>
@@ -1000,16 +1503,17 @@
         <span class="skill-item">Azure</span>
         <span class="skill-item">PostgreSQL</span>
         <span class="skill-item">MongoDB</span>
+        <span class="skill-item">Supabase</span>
       </div>
     </div>
     <div class="skill-category fade-up">
-      <div class="skill-cat-title">Frontend</div>
+      <div class="skill-cat-title">Frontend — Working Knowledge</div>
       <div class="skill-items">
         <span class="skill-item">React</span>
         <span class="skill-item">Next.js</span>
-        <span class="skill-item">TypeScript</span>
-        <span class="skill-item">Tailwind CSS</span>
+        <span class="skill-item">HTML / CSS</span>
         <span class="skill-item">Node.js</span>
+        <span class="skill-item">Tailwind CSS</span>
       </div>
     </div>
   </div>
@@ -1023,14 +1527,14 @@
   <h2 class="section-title">Experience</h2>
 
   <div class="exp-item fade-up">
-    <div class="exp-date">Jul 2025 — Present<br><br>Pune, India · On-site</div>
+    <div class="exp-date">Jul 2025 — Present<br><br>Pune, India</div>
     <div>
       <div class="exp-role">AI Developer</div>
       <div class="exp-company">Geeky Bee AI Private Limited</div>
       <ul class="exp-points">
-        <li>Built Arabic OCR insurance automation pipeline — reduced client processing time by 90%</li>
+        <li>Built Arabic OCR insurance automation pipeline — reduced client manual processing by ~90%</li>
         <li>Led satellite imagery → AutoCAD pipeline for US traffic management platform using SAM 3 and fine-tuned CV models</li>
-        <li>Built multi-agent LLM system with Google Grounding Search covering all US state traffic regulations</li>
+        <li>Built multi-agent LLM system with Google Grounding Search covering all 50 US state traffic regulations</li>
         <li>Developed AI-powered PDF contract differentiator classifying structural, semantic, and surface-level changes</li>
         <li>Built construction document analysis pipeline using Gemini File API for roof estimation and takeoff analysis</li>
       </ul>
@@ -1038,7 +1542,7 @@
   </div>
 
   <div class="exp-item fade-up">
-    <div class="exp-date">Jan 2025 — Jul 2025<br><br>Pune, India</div>
+    <div class="exp-date">Jan 2025 — Jun 2025<br><br>Pune, India</div>
     <div>
       <div class="exp-role">AI Development Intern</div>
       <div class="exp-company">Geeky Bee AI Private Limited</div>
@@ -1061,17 +1565,26 @@
       </ul>
     </div>
   </div>
+</section>
 
-  <div class="exp-item fade-up">
-    <div class="exp-date">Mar 2024 — Sep 2024<br><br>Ingolstadt, Germany</div>
-    <div>
-      <div class="exp-role">Exchange Semester</div>
-      <div class="exp-company">Technische Hochschule Ingolstadt</div>
-      <ul class="exp-points">
-        <li>B.Tech AI — international semester focused on applied AI and image recognition</li>
-        <li>Grade: 2.2 (German grading system)</li>
-        <li>Expanded European academic and professional network</li>
-      </ul>
+<hr class="section-divider">
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">// academic</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card fade-up">
+      <div class="edu-flag">🇮🇳 India</div>
+      <div class="edu-school">Symbiosis Institute of Technology</div>
+      <div class="edu-degree">B.Tech in Artificial Intelligence</div>
+      <div class="edu-date">Sep 2021 — May 2025 · Pune</div>
+    </div>
+    <div class="edu-card highlight fade-up">
+      <div class="edu-flag">🇩🇪 Germany · Exchange</div>
+      <div class="edu-school">Technische Hochschule Ingolstadt</div>
+      <div class="edu-degree">B.Tech AI — Image Recognition & Applied AI · Grade 2.2</div>
+      <div class="edu-date">Mar 2024 — Sep 2024 · Ingolstadt</div>
     </div>
   </div>
 </section>
@@ -1082,11 +1595,12 @@
 <section id="contact">
   <div class="contact-section fade-up">
     <h2 class="contact-title">Let's Build<br><span style="color:var(--accent)">Something Real</span></h2>
-    <p class="contact-sub">Open to remote AI engineering roles with EU and US companies. Available for full-time positions and contract work.</p>
+    <p class="contact-sub">Open to remote AI engineering roles with EU and US companies. Comfortable with CET / EST timezones. Available for full-time positions and contract work.</p>
     <div class="contact-links">
       <a href="mailto:lakshya.kaushik811@gmail.com" class="contact-link">✉ lakshya.kaushik811@gmail.com</a>
       <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" class="contact-link">in LinkedIn</a>
       <a href="https://github.com/lakshya811" target="_blank" class="contact-link">⌥ GitHub</a>
+      <a href="https://raw.githubusercontent.com/lakshya811/lakshya811.github.io/main/Resume-Lakshya_Kaushik.pdf" target="_blank" class="contact-link">↓ Resume PDF</a>
     </div>
   </div>
 </section>
@@ -1096,33 +1610,100 @@
 </footer>
 
 <script>
-  // Scroll animations
+  // ─── CASE STUDY TOGGLE ───────────────────────────────────────────────────────
+  function toggleCase() {
+    document.getElementById('caseStudy').classList.toggle('open');
+    document.getElementById('caseToggle').classList.toggle('open');
+    const open = document.getElementById('caseStudy').classList.contains('open');
+    document.querySelector('#caseToggle span').textContent =
+      open ? 'Hide engineering case study' : 'Read the full engineering case study';
+  }
+
+  // ─── SCROLL FADE-IN ─────────────────────────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 100);
+        setTimeout(() => entry.target.classList.add('visible'), 100);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Nav active state
+  // ─── NAV ACTIVE STATE ────────────────────────────────────────────────────────
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-resume)');
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
     });
     navLinks.forEach(link => {
       link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
     });
+  });
+
+  // ─── AUTO STATS ──────────────────────────────────────────────────────────────
+  // Project count: auto-counted from the DOM — just add more .project-card divs
+  // and this updates automatically. No manual editing needed.
+  const projectCount = document.querySelectorAll('.project-card').length;
+
+  // Experience duration: start date Jan 2025, calculates live from today's date
+  const START_DATE = new Date('2025-01-01');
+  const now        = new Date();
+  const totalMonths = (now.getFullYear() - START_DATE.getFullYear()) * 12
+                    + (now.getMonth() - START_DATE.getMonth());
+  const years   = Math.floor(totalMonths / 12);
+  const months  = totalMonths % 12;
+
+  let expLabel;
+  if (years === 0) {
+    expLabel = `${months}mo`;
+  } else if (months === 0) {
+    expLabel = `${years}y`;
+  } else {
+    expLabel = `${years}y ${months}mo`;
+  }
+
+  // Markets: auto-counted from unique market dots in hero sidebar
+  // (each .market-tag = one market — add a tag to add a market)
+  const marketCount = document.querySelectorAll('.market-tag').length;
+
+  // ─── ANIMATED COUNTER ────────────────────────────────────────────────────────
+  function animateCounter(el, target, isText) {
+    if (isText) { el.textContent = target; return; }
+    let start = 0;
+    const duration = 1200;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Trigger counters when hero stats scroll into view
+  const statsEl = document.querySelector('.hero-stats');
+  let countersRun = false;
+  const statsObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !countersRun) {
+      countersRun = true;
+      animateCounter(document.getElementById('stat-projects'), projectCount, false);
+      animateCounter(document.getElementById('stat-markets'),  marketCount,  false);
+      animateCounter(document.getElementById('stat-exp'),      expLabel,     true);
+    }
+  }, { threshold: 0.5 });
+  statsObserver.observe(statsEl);
+
+  // Also update the project-index numbers to stay in sequence automatically
+  document.querySelectorAll('.project-index').forEach((el, i) => {
+    const parts = el.textContent.split('/');
+    if (parts.length >= 2) {
+      el.textContent = `${String(i + 1).padStart(2, '0')} /${parts.slice(1).join('/')}`;
+    }
   });
 </script>
 </body>
