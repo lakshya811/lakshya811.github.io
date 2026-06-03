@@ -1,830 +1,1129 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lakshya Kaushik | AI Engineer</title>
-  <meta name="description" content="AI Engineer specializing in computer vision, NLP, and production ML systems with PyTorch, TensorFlow, Docker/K8s, and cloud deployment." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-          colors: {
-            brand: {
-              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
-              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490',
-              800: '#155e75', 900: '#164e63'
-            }
-          },
-          boxShadow: {
-            glow: '0 0 0 2px rgba(34,211,238,.25), 0 10px 30px rgba(0,0,0,.35)'
-          },
-          backgroundImage: {
-            'grid-dark': 'radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    ::selection { background-color: #22d3ee; color: #0b1220; }
-    
-    /* Subtle grid background with animation */
-    .bg-grid { 
-      background-size: 40px 40px; 
-      background-image: 
-        linear-gradient(to right, rgba(34,211,238,.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(34,211,238,.03) 1px, transparent 1px);
-      animation: grid-flow 20s linear infinite;
-    }
-    
-    @keyframes grid-flow {
-      0% { background-position: 0 0; }
-      100% { background-position: 40px 40px; }
-    }
-    
-    /* Smooth fade/slide utility with stagger */
-    .reveal { 
-      opacity: 0; 
-      transform: translateY(30px); 
-      transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform .8s cubic-bezier(0.16, 1, 0.3, 1); 
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    
-    /* Nicer scrollbar */
-    ::-webkit-scrollbar { width: 12px; height: 12px; }
-    ::-webkit-scrollbar-track { background: #0b1220; }
-    ::-webkit-scrollbar-thumb { 
-      background: linear-gradient(180deg, #0ea5b5, #06b6d4); 
-      border-radius: 10px; 
-      border: 2px solid #0b1220;
-    }
-    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #22d3ee, #0ea5b5); }
-    
-    /* Enhanced icon buttons */
-    .icon-btn {
-      display: grid;
-      place-items: center;
-      height: 44px;
-      width: 44px;
-      border-radius: 9999px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
-      color: #e5e7eb;
-      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .icon-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(34,211,238,.2), transparent 70%);
-      opacity: 0;
-      transition: opacity .3s ease;
-    }
-    
-    .icon-btn:hover {
-      background: rgba(34,211,238,.15);
-      transform: translateY(-3px) scale(1.05);
-      border-color: rgba(34,211,238,.4);
-      box-shadow: 0 10px 30px rgba(34,211,238,.2);
-    }
-    
-    .icon-btn:hover::before {
-      opacity: 1;
-    }
-    
-    .icon-btn svg {
-      height: 22px;
-      width: 22px;
-      display: block;
-      position: relative;
-      z-index: 1;
-    }
-    
-    /* Floating animation for hero image */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    /* Gradient text animation */
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .gradient-text {
-      background: linear-gradient(
-        90deg,
-        #22d3ee,
-        #06b6d4,
-        #3b82f6,
-        #8b5cf6,
-        #22d3ee
-      );
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient-shift 8s ease infinite;
-    }
-    
-    /* Glowing border effect */
-    .glow-border {
-      position: relative;
-    }
-    
-    .glow-border::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(45deg, #22d3ee, #3b82f6, #8b5cf6, #22d3ee);
-      background-size: 300% 300%;
-      border-radius: inherit;
-      opacity: 0;
-      transition: opacity .5s ease;
-      animation: gradient-rotate 6s ease infinite;
-      z-index: -1;
-      filter: blur(8px);
-    }
-    
-    .glow-border:hover::before {
-      opacity: 0.6;
-    }
-    
-    @keyframes gradient-rotate {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    /* Shimmer effect for cards */
-    .shimmer {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .shimmer::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-      );
-      transition: left 0.7s ease;
-    }
-    
-    .shimmer:hover::after {
-      left: 100%;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lakshya Kaushik — AI Engineer specializing in computer vision, LLM pipelines, and production AI systems deployed across US, Philippines and Egypt.">
+<title>Lakshya Kaushik | AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: #222222;
+    --accent: #e8ff47;
+    --accent2: #47b8ff;
+    --text: #f0f0f0;
+    --text-muted: #666666;
+    --text-dim: #999999;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(232,255,71,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,255,71,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,255,71,0.08);
+    border: 1px solid rgba(232,255,71,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 300;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .stat-item { }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 4px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-markets {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .market-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .market-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 60px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    margin-bottom: 24px;
+  }
+
+  .project-card:hover {
+    border-color: rgba(232,255,71,0.3);
+    transform: translateY(-2px);
+  }
+
+  .project-header {
+    padding: 36px 40px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-meta { flex: 1; }
+
+  .project-index {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-client {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    margin-bottom: 16px;
+  }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .project-impact {
+    background: rgba(232,255,71,0.05);
+    border: 1px solid rgba(232,255,71,0.15);
+    border-radius: 10px;
+    padding: 20px 24px;
+    min-width: 200px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .impact-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .impact-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .project-body {
+    padding: 28px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .project-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .challenge-list, .tech-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .challenge-list li {
+    font-size: 14px;
+    color: var(--text-dim);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .challenge-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .pipeline-flow {
+    grid-column: 1 / -1;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    overflow-x: auto;
+  }
+
+  .pipeline-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .pipeline-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .pipeline-node.highlight {
+    border-color: rgba(232,255,71,0.4);
+    color: var(--accent);
+  }
+
+  .pipeline-arrow {
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 48px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    transition: border-color 0.3s;
+  }
+
+  .skill-category:hover { border-color: rgba(232,255,71,0.2); }
+
+  .skill-cat-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-item {
+    background: var(--surface2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding-top: 4px;
+  }
+
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent2);
+    margin-bottom: 16px;
+  }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-points li {
+    font-size: 14px;
+    color: var(--text-dim);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+
+  .contact-sub {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero h1 { font-size: 48px; letter-spacing: -2px; }
+    .hero-markets { display: none; }
+    .hero-stats { gap: 28px; }
+    .project-header { flex-direction: column; }
+    .project-body { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .contact-section { padding: 40px 24px; }
+    .section-divider { margin: 0 24px; }
+  }
+</style>
 </head>
-<body class="bg-gray-950 text-white font-sans antialiased">
-  <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand-500 focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded-md">Skip to content</a>
+<body>
 
-  <!-- ===== Header ===== -->
-  <header id="header" class="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-gray-950/80 backdrop-blur-xl transition-all">
-    <!-- Progress bar -->
-    <div id="progress-bar" class="absolute top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-blue-500 to-purple-500 transition-all duration-300" style="width: 0%"></div>
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="h-16 flex items-center justify-between">
-        <a href="#home" class="flex items-center gap-2 group">
-          <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white font-black shadow-glow transition-transform group-hover:scale-110">LK</span>
-          <span class="hidden sm:block text-sm tracking-widest text-white/70 group-hover:text-white transition-colors font-bold">Lakshya Kaushik</span>
-        </a>
-        <button id="menu-toggle" class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-white/10 focus:outline-none transition" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
-          <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-          <svg id="menu-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-        </button>
-        <div class="hidden md:flex items-center gap-1">
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#about">About</a>
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#skills">Skills</a>
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#experience">Experience</a>
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#projects">Projects</a>
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#education">Education</a>
-          <a class="nav-link px-4 py-2 text-sm font-semibold rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all" href="#contact">Contact</a>
-        </div>
-      </div>
-      <div id="mobile-menu" class="md:hidden hidden pb-4">
-        <div class="grid gap-1">
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#about">About</a>
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#skills">Skills</a>
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#experience">Experience</a>
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#projects">Projects</a>
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#education">Education</a>
-          <a class="nav-link block px-3 py-2 rounded-md text-white/80 hover:bg-white/5" href="#contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-  </header>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">LK</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <main class="relative">
-    <!-- Ambient background -->
-    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-950 via-gray-950/95 to-gray-950"></div>
-      <div class="absolute inset-0 bg-grid opacity-50"></div>
-      <div class="absolute -top-48 left-1/2 -translate-x-1/2 h-96 w-[60rem] rounded-full bg-brand-500/20 blur-3xl"></div>
-      <div class="absolute top-1/3 -right-48 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl"></div>
-      <div class="absolute bottom-0 -left-48 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"></div>
+<!-- HERO -->
+<div id="home" class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to Remote · EU & US Companies</div>
+    <h1>Lakshya<br><span>Kaushik</span></h1>
+    <p class="hero-sub">AI Engineer building production systems — computer vision pipelines, LLM agents, and document intelligence — deployed across three continents.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Production<br>Systems Shipped</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">International<br>Markets</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">90%</div>
+        <div class="stat-label">Workflow<br>Automation</div>
+      </div>
     </div>
-
-    <!-- ===== Hero ===== -->
-    <section id="home" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div class="reveal order-2 lg:order-1">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight">
-            <span class="block text-white mb-2">Lakshya Kaushik</span>
-            <span class="block gradient-text relative z-[1] pb-2">AI Engineer</span>
-          </h1>
-          <p class="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">Specializing in computer vision, NLP, and production ML systems. Experienced in deploying scalable AI solutions with PyTorch, TensorFlow, and cloud-native architectures.</p>
-          <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-            <a href="https://raw.githubusercontent.com/lakshya811/lakshya811.github.io/main/Resume-Lakshya_Kaushik.pdf" target="_blank" download="Lakshya_Kaushik_Resume.pdf" class="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 px-6 sm:px-8 py-3 sm:py-4 font-bold shadow-glow transition-all hover:shadow-[0_0_0_3px_rgba(34,211,238,.3),0_15px_40px_rgba(0,0,0,.4)] hover:scale-105 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              Download Resume
-            </a>
-            <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 hover:border-brand-400/50 bg-white/5 hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 font-bold text-white/90 hover:text-white transition-all hover:scale-105 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              Get in Touch
-            </a>
-            <a href="#projects" class="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 hover:border-brand-400/50 bg-white/5 hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 font-bold text-white/90 hover:text-white transition-all hover:scale-105 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 7l5 5-5 5"/></svg>
-              View Projects
-            </a>
-          </div>
-          <div class="mt-8 sm:mt-10 flex gap-3 sm:gap-4 justify-center sm:justify-start">
-            <a href="https://github.com/lakshya811" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a10 10 0 00-3.162 19.492c.5.092.683-.217.683-.482 0-.237-.009-.866-.013-1.701-2.78.604-3.366-1.34-3.366-1.34-.454-1.153-1.11-1.461-1.11-1.461-.908-.62.069-.607.069-.607 1.004.071 1.533 1.031 1.533 1.031.892 1.528 2.341 1.087 2.91.832.091-.647.35-1.086.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.748-1.025 2.748-1.025.547 1.378.203 2.397.1 2.65.64.7 1.028 1.592 1.028 2.683 0 3.842-2.338 4.687-4.566 4.935.36.31.68.919.68 1.853 0 1.337-.012 2.416-.012 2.744 0 .268.18.58.688.481A10 10 0 0012 2z" clip-rule="evenodd"/></svg>
-            </a>
-            <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.78v2.05h.07c.66-1.25 2.27-2.56 4.67-2.56 5 0 5.92 3.29 5.92 7.57V24h-5v-6.74c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V24h-5V8.98z"/></svg>
-            </a>
-            <a href="mailto:lakshya.kaushik811@gmail.com" class="icon-btn" aria-label="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 13L2 6h20l-10 7z"/><path d="M2 8l10 7 10-7v10H2z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="reveal lg:justify-self-end order-1 lg:order-2">
-          <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto float-animation">
-            <div class="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand-400 via-blue-500 to-purple-500 opacity-40 blur-2xl"></div>
-            <div class="relative">
-              <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-500 to-brand-700 opacity-50 blur"></div>
-              <img src="https://raw.githubusercontent.com/lakshya811/lakshya811.github.io/main/image_pp.jpeg" alt="Lakshya Kaushik portrait" class="relative rounded-3xl w-full aspect-[4/5] object-cover border-2 border-white/20 shadow-[0_20px_60px_rgba(0,0,0,.5)]" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== About ===== -->
-    <section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <div class="reveal grid lg:grid-cols-3 gap-6 sm:gap-8 items-start">
-        <div class="lg:col-span-2 bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 glow-border shimmer backdrop-blur-sm">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-2">About Me</h2>
-          <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mb-4 sm:mb-6"></div>
-          <p class="text-white/90 leading-relaxed text-base sm:text-lg">AI Engineer with expertise in computer vision, NLP, and deploying scalable ML systems. Proficient in PyTorch, TensorFlow, and production-grade frameworks (FastAPI, Docker, Kubernetes). Skilled in building end-to-end pipelines—from model training and optimization to cloud deployment (AWS, GCP, Azure). Strong foundation in Python, data engineering, and MLOps practices including CI/CD, model versioning, and monitoring.</p>
-        </div>
-        <div class="bg-gradient-to-br from-brand-500/20 to-purple-500/20 border border-brand-400/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:sticky lg:top-28 self-start backdrop-blur-sm shadow-[0_8px_32px_rgba(34,211,238,.15)]">
-          <p class="text-xs sm:text-sm uppercase tracking-widest text-brand-300 font-bold">Currently</p>
-          <p class="mt-2 sm:mt-3 font-bold text-lg sm:text-xl text-white">AI Engineer @ Geeky Bee AI Pvt. Ltd.</p>
-          <p class="text-white/70 mt-1 text-sm sm:text-base">Jan 2025 – Present · Pune, India</p>
-          <div class="mt-6 pt-6 border-t border-white/10">
-            <div class="flex items-center gap-2 text-white/80">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <span>Based in Pune, India</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Skills ===== -->
-    <section id="skills" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <h2 class="reveal text-3xl sm:text-4xl font-bold text-center mb-3">Technical Skills</h2>
-      <div class="reveal text-center mb-8 sm:mb-10">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mx-auto"></div>
-      </div>
-      <div id="skills-container" class="reveal mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-5xl mx-auto px-2">
-        ["Python","PyTorch","TensorFlow","Scikit-learn","XGBoost","Keras","Computer Vision","NLP","OpenCV","YOLO","Faster R-CNN","U-Net","Transformers","BERT","GPT","LLMs","FastAPI","Flask","Streamlit","Gradio","Docker","Kubernetes","AWS","GCP","Azure","Git","CI/CD","MLflow","Weights & Biases","Pandas","NumPy","SQL","MongoDB"].forEach?.call(null)
-      </div>
-      <!-- Fallback for no-JS: render badges directly -->
-      <noscript>
-        <div class="mt-8 flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
-          <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">Keras</span><span class="chip">Computer Vision</span><span class="chip">NLP</span><span class="chip">OpenCV</span><span class="chip">YOLO</span><span class="chip">Faster R-CNN</span><span class="chip">U-Net</span><span class="chip">Transformers</span><span class="chip">BERT</span><span class="chip">GPT</span><span class="chip">LLMs</span><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">Streamlit</span><span class="chip">Gradio</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">Git</span><span class="chip">CI/CD</span><span class="chip">MLflow</span><span class="chip">Weights & Biases</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">SQL</span><span class="chip">MongoDB</span>
-        </div>
-      </noscript>
-    </section>
-
-    <!-- ===== Experience (timeline) ===== -->
-    <section id="experience" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <h2 class="reveal text-3xl sm:text-4xl font-bold text-center mb-3">Professional Experience</h2>
-      <div class="reveal text-center mb-8 sm:mb-12">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mx-auto"></div>
-      </div>
-      <div class="reveal relative max-w-4xl mx-auto mt-8 sm:mt-10">
-        <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-500 via-blue-500 to-purple-500 opacity-30"></div>
-
-        <!-- Item -->
-        <article class="relative md:grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
-          <div class="timeline-dot"></div>
-          <div></div>
-          <div class="md:pl-8 pl-10 md:pl-8">
-            <div class="card shimmer">
-              <h3 class="h3">AI Engineer</h3>
-              <p class="sub">Geeky Bee AI Pvt. Ltd.</p>
-              <p class="meta">Jan 2025 – Present · Pune, India</p>
-              <ul class="list text-sm sm:text-base">
-                <li>Developed custom object detection models using YOLO and Faster R-CNN for real-time applications, achieving 90%+ mAP.</li>
-                <li>Built end-to-end NLP pipelines with BERT and GPT for text classification and generation tasks.</li>
-                <li>Deployed ML models via FastAPI with Docker/Kubernetes on AWS, serving 100K+ daily requests.</li>
-                <li>Implemented MLOps workflows using CI/CD pipelines, model versioning with MLflow, and monitoring dashboards.</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-
-        <article class="relative md:grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 md:flex-row-reverse">
-          <div class="timeline-dot"></div>
-          <div class="md:pr-8 order-2 md:order-none pl-10 md:pl-0">
-            <div class="card shimmer">
-              <h3 class="h3">Research Intern</h3>
-              <p class="sub">Symbiosis Centre for Applied Artificial Intelligence</p>
-              <p class="meta">Jul 2024 – Dec 2024 · Pune, India</p>
-              <ul class="list text-sm sm:text-base">
-                <li>Led research on multimodal medical imaging fusion combining retinal scans and clinical data for disease prediction.</li>
-                <li>Achieved 8% improvement in AUC through hybrid fusion architectures using PyTorch.</li>
-                <li>Published findings and presented at academic conferences, contributing to advancements in healthcare AI.</li>
-              </ul>
-            </div>
-          </div>
-          <div></div>
-        </article>
-
-        <article class="relative md:grid md:grid-cols-2 gap-6 sm:gap-8">
-          <div class="timeline-dot"></div>
-          <div></div>
-          <div class="md:pl-8 pl-10 md:pl-8">
-            <div class="card shimmer">
-              <h3 class="h3">IT Consultant Intern</h3>
-              <p class="sub">Anyology Specialty Services Pvt. Ltd.</p>
-              <p class="meta">Aug 2023 – Nov 2023 · Remote</p>
-              <ul class="list text-sm sm:text-base">
-                <li>Designed and deployed cloud infrastructure on GCP for WordPress hosting, reducing costs by $1,000+/year.</li>
-                <li>Conducted research on cloud migration strategies and contributed to IT infrastructure roadmap.</li>
-              </ul>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== Projects ===== -->
-    <section id="projects" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <h2 class="reveal text-3xl sm:text-4xl font-bold text-center mb-3">Projects</h2>
-      <div class="reveal text-center mb-8 sm:mb-12">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mx-auto"></div>
-      </div>
-      <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-6 sm:mt-8">
-        <!-- Card component template repeated -->
-        <a href="https://github.com/lakshya811/AgNOR-detection" target="_blank" rel="noopener" class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop" alt="AgNOR Detection" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=Medical+Imaging';" />
-          <div class="proj-body">
-            <h3 class="proj-title">AgNOR Detection in Medical Imaging</h3>
-            <p class="proj-text">Deep learning model for nucleolar organizer region detection in microscopy images. Implemented U-Net architecture with data augmentation, achieving high precision for cancer diagnosis support.</p>
-            <div class="tags"><span>PyTorch</span><span>U-Net</span><span>OpenCV</span><span>Medical AI</span></div>
-          </div>
-        </a>
-
-        <div class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200&auto=format&fit=crop" alt="Object Detection" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=Object+Detection';" />
-          <div class="proj-body">
-            <h3 class="proj-title">Real-time Object Detection System</h3>
-            <p class="proj-text">Custom YOLO-based detection pipeline for real-time applications. Optimized for edge deployment with TensorRT, achieving 90%+ mAP at 60+ FPS on retail datasets.</p>
-            <div class="tags"><span>YOLO</span><span>TensorRT</span><span>OpenCV</span><span>Real-time AI</span></div>
-          </div>
-        </div>
-
-        <div class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Sentiment Analysis" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=NLP+System';" />
-          <div class="proj-body">
-            <h3 class="proj-title">NLP Sentiment Analysis Pipeline</h3>
-            <p class="proj-text">Production-ready sentiment classifier using BERT fine-tuned on domain-specific data. Deployed as FastAPI microservice with Docker, processing 100K+ requests/day at 87% accuracy.</p>
-            <div class="tags"><span>BERT</span><span>FastAPI</span><span>Docker</span><span>NLP</span></div>
-          </div>
-        </div>
-
-        <div class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" alt="Medical Fusion" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=Multimodal+AI';" />
-          <div class="proj-body">
-            <h3 class="proj-title">Multimodal Medical Imaging Fusion</h3>
-            <p class="proj-text">Research project combining retinal imaging with clinical data for disease prediction. Hybrid fusion architecture improved AUC by 8% over single-modality baselines.</p>
-            <div class="tags"><span>PyTorch</span><span>Multimodal</span><span>Healthcare AI</span></div>
-          </div>
-        </div>
-
-        <a href="https://github.com/lakshya811/gen_wrapper" target="_blank" rel="noopener" class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop" alt="LLM Wrapper" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=LLM+Tools';" />
-          <div class="proj-body">
-            <h3 class="proj-title">LLM API Wrapper Library</h3>
-            <p class="proj-text">Unified Python interface for multiple LLM providers (OpenAI, Anthropic, Cohere). Simplifies prompt engineering and model switching for production applications.</p>
-            <div class="tags"><span>Python</span><span>LLMs</span><span>API Design</span></div>
-          </div>
-        </a>
-
-        <div class="proj glow-border">
-          <img class="proj-img" src="https://images.unsplash.com/photo-1527474305487-b87b222841cc?q=80&w=1200&auto=format&fit=crop" alt="Segmentation" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" onerror="this.onerror=null;this.src='https://dummyimage.com/1200x600/0f172a/22d3ee&text=Segmentation';" />
-          <div class="proj-body">
-            <h3 class="proj-title">Semantic Segmentation for Autonomous Systems</h3>
-            <p class="proj-text">DeepLab v3+ implementation for urban scene understanding. Deployed on edge devices with model quantization, achieving real-time performance with minimal accuracy loss.</p>
-            <div class="tags"><span>DeepLab</span><span>TensorFlow</span><span>Edge AI</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Education ===== -->
-    <section id="education" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <h2 class="reveal text-3xl sm:text-4xl font-bold text-center mb-3">Education</h2>
-      <div class="reveal text-center mb-8 sm:mb-12">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mx-auto"></div>
-      </div>
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto mt-6 sm:mt-8">
-        <div class="card shimmer glow-border">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-              </svg>
-            </div>
-            <div class="flex-1">
-              <h3 class="h3">Symbiosis Institute of Technology</h3>
-              <p class="sub">B.Tech in AI & Machine Learning</p>
-              <p class="meta">Sep 2021 – Jun 2025 · Pune, India</p>
-            </div>
-          </div>
-        </div>
-        <div class="card shimmer glow-border">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="flex-1">
-              <h3 class="h3">Technische Hochschule Ingolstadt</h3>
-              <p class="sub">Exchange Semester</p>
-              <p class="meta">Mar 2024 – Sep 2024 · Ingolstadt, Germany</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Contact ===== -->
-    <section id="contact" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <h2 class="reveal text-3xl sm:text-4xl font-bold text-center mb-3">Get In Touch</h2>
-      <div class="reveal text-center mb-8 sm:mb-12">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mx-auto"></div>
-      </div>
-      <div class="reveal max-w-2xl mx-auto mt-6 sm:mt-8 bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 text-center glow-border backdrop-blur-sm">
-        <p class="text-white/90 text-base sm:text-lg leading-relaxed mb-6">I'm open to new opportunities. If you have a project in mind or just want to connect, reach out.</p>
-        <div class="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          <a href="mailto:lakshya.kaushik811@gmail.com" class="group flex items-center justify-center gap-3 sm:gap-4 bg-gradient-to-br from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/20 hover:border-brand-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all hover:scale-105 hover:shadow-[0_8px_30px_rgba(34,211,238,.2)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-brand-400 transition-transform group-hover:scale-110 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13L2 6h20l-10 7z"/><path d="M2 8l10 7 10-7v10H2z"/></svg>
-            <div class="text-left">
-              <p class="text-xs text-white/60 mb-1">Email</p>
-              <p class="text-sm sm:text-base font-semibold text-white break-all">lakshya.kaushik811@gmail.com</p>
-            </div>
-          </a>
-          <a href="tel:+919456007616" class="group flex items-center justify-center gap-3 sm:gap-4 bg-gradient-to-br from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/20 hover:border-brand-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all hover:scale-105 hover:shadow-[0_8px_30px_rgba(34,211,238,.2)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-brand-400 transition-transform group-hover:scale-110 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div class="text-left">
-              <p class="text-xs text-white/60 mb-1">Phone</p>
-              <p class="text-sm sm:text-base font-semibold text-white">+91 9456007616</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="relative text-center py-8 sm:py-12 border-t border-white/10 bg-gradient-to-b from-transparent to-gray-950/50">
-    <div class="container mx-auto px-4">
-      <p class="text-white/70 text-base sm:text-lg">&copy; <span id="year"></span> Lakshya Kaushik. All rights reserved.</p>
-      <p class="text-white/50 text-xs sm:text-sm mt-2">Built with passion and cutting-edge tech</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="mailto:lakshya.kaushik811@gmail.com" class="btn-secondary">Get in Touch →</a>
     </div>
-  </footer>
+  </div>
+  <div class="hero-markets">
+    <div class="market-tag"><span class="market-dot" style="background:#47ff8a"></span>Egypt · Healthcare AI</div>
+    <div class="market-tag"><span class="market-dot" style="background:#47b8ff"></span>Philippines · Computer Vision</div>
+    <div class="market-tag"><span class="market-dot" style="background:#e8ff47"></span>United States · Traffic AI</div>
+    <div class="market-tag"><span class="market-dot" style="background:#ff8a47"></span>Multi-market · Document AI</div>
+  </div>
+</div>
 
-  <!-- Back to top -->
-  <a href="#home" class="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 hover:from-brand-600 hover:to-brand-800 text-white shadow-[0_8px_30px_rgba(34,211,238,.3)] transition-all hover:scale-110 hover:shadow-[0_12px_40px_rgba(34,211,238,.4)] group z-50" aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
-  </a>
+<hr class="section-divider">
 
-  <style>
-    /* Utility components */
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .625rem 1rem;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(34,211,238,.15), rgba(59,130,246,.15));
-      border: 1px solid rgba(34,211,238,.25);
-      font-size: .875rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.95);
-      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: default;
-    }
-    
-    .chip:hover {
-      transform: translateY(-2px) scale(1.05);
-      background: linear-gradient(135deg, rgba(34,211,238,.25), rgba(59,130,246,.25));
-      border-color: rgba(34,211,238,.4);
-      box-shadow: 0 8px 20px rgba(34,211,238,.2);
-    }
-    
-    .card {
-      background: linear-gradient(135deg, rgba(17,24,39,.8), rgba(17,24,39,.6));
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 1.5rem;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
-      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .card:hover {
-      border-color: rgba(34,211,238,.3);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.3);
-    }
-    
-    .h3 {
-      font-weight: 800;
-      font-size: 1.25rem;
-      background: linear-gradient(135deg, #67e8f9, #22d3ee);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .sub {
-      font-weight: 600;
-      font-size: 1.05rem;
-      color: rgba(255,255,255,.9);
-    }
-    
-    .meta {
-      font-size: .9rem;
-      color: rgba(255,255,255,.65);
-      margin-top: .375rem;
-      margin-bottom: 1rem;
-    }
-    
-    .list {
-      list-style: none;
-      padding-left: 0;
-      color: rgba(255,255,255,.88);
-      line-height: 1.7;
-    }
-    
-    .list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: .5rem;
-    }
-    
-    .list li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: #22d3ee;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    
-    .timeline-dot {
-      position: absolute;
-      left: 1rem;
-      top: .5rem;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #22d3ee, #3b82f6);
-      box-shadow: 0 0 0 4px rgba(34,211,238,.2), 0 0 20px rgba(34,211,238,.4);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse-dot {
-      0%, 100% {
-        box-shadow: 0 0 0 4px rgba(34,211,238,.2), 0 0 20px rgba(34,211,238,.4);
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// selected work</div>
+  <h2 class="section-title">Production Systems<br>Built & Deployed</h2>
+
+  <!-- PROJECT 1: OCR -->
+  <div class="project-card fade-up">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-index">01 / Healthcare · Egypt Market</div>
+        <h3 class="project-title">Arabic Insurance Claims Automation</h3>
+        <div class="project-client">↗ Deployed for Egyptian healthcare insurance provider</div>
+        <p class="project-desc">End-to-end AI pipeline that reads Arabic insurance cards, identity documents, and hospital bills — then automatically matches patient data, verifies coverage, and submits structured claims. Eliminated the need for manual claims processing staff.</p>
+      </div>
+      <div class="project-impact">
+        <div class="impact-number">90%</div>
+        <div class="impact-label">Reduction in manual<br>processing time</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div>
+        <div class="project-section-title">Key Challenges Solved</div>
+        <ul class="challenge-list">
+          <li>Arabic OCR with mixed numeral systems (Arabic-Indic digits)</li>
+          <li>Female patient name matching — cards show husband's name, not patient's</li>
+          <li>Employer-issued vs personal insurance card reconciliation</li>
+          <li>Multi-document cross-validation (card + ID + hospital bill)</li>
+          <li>Playwright automation → JSON API migration for form submission</li>
+        </ul>
+      </div>
+      <div>
+        <div class="project-section-title">Tech Stack</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Azure OCR</span>
+          <span class="tech-tag">OpenAI GPT-4o</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">Playwright</span>
+          <span class="tech-tag">JSON APIs</span>
+          <span class="tech-tag">Arabic NLP</span>
+        </div>
+      </div>
+      <div class="pipeline-flow">
+        <div class="pipeline-step">
+          <div class="pipeline-node">Insurance Card</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">Azure OCR</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">GPT-4o Matching</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node">Validation</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">Auto Submit</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node">Claim Filed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: TRAFFIC -->
+  <div class="project-card fade-up">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-index">02 / Infrastructure · United States Market</div>
+        <h3 class="project-title">Traffic Management Automation Platform</h3>
+        <div class="project-client">↗ Deployed for US-based traffic engineering company</div>
+        <p class="project-desc">Full automation of a previously manual traffic planning workflow — from GPS coordinates to a signed-off AutoCAD traffic management plan. The system generates regulatory-compliant road work plans with cone counts, signage placement, and staffing requirements based on state-specific MUTCD guidelines.</p>
+      </div>
+      <div class="project-impact">
+        <div class="impact-number">~10x</div>
+        <div class="impact-label">Faster plan<br>generation vs manual</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div>
+        <div class="project-section-title">What I Built</div>
+        <ul class="challenge-list">
+          <li>Satellite imagery pipeline: coordinates → Google Maps API → tiled 7K resolution road image</li>
+          <li>Fine-tuned CV model detecting lanes, turn signals, bike tracks, speed markings, dividers</li>
+          <li>SAM 3 (Meta) integration for prompt-based road feature segmentation</li>
+          <li>Automated DXF/DWG file generation with road signs and curve geometry</li>
+          <li>Multi-agent LLM (Gemini + Google Grounding) for all-US-state regulatory lookup</li>
+          <li>Final plan output: cone count, signage positions, staff requirements per state law</li>
+        </ul>
+      </div>
+      <div>
+        <div class="project-section-title">Tech Stack</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Google Maps API</span>
+          <span class="tech-tag">SAM 3 (Meta)</span>
+          <span class="tech-tag">Custom YOLO</span>
+          <span class="tech-tag">Gemini</span>
+          <span class="tech-tag">Google Grounding</span>
+          <span class="tech-tag">AutoCAD DXF/DWG</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">Multi-Agent LLM</span>
+        </div>
+      </div>
+      <div class="pipeline-flow">
+        <div class="pipeline-step">
+          <div class="pipeline-node">GPS Coordinates</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">Satellite Tiles → 7K Image</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">CV Model + SAM 3</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">DWG Generation</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node highlight">LLM Agent</div>
+          <div class="pipeline-arrow">→</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="pipeline-node">Traffic Plan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: PDF -->
+  <div class="project-card fade-up">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-index">03 / Legal & Enterprise · Document Intelligence</div>
+        <h3 class="project-title">AI-Powered Contract Differentiator</h3>
+        <div class="project-client">↗ Built for enterprise contract management workflows</div>
+        <p class="project-desc">Side-by-side PDF comparison tool that uses AI to classify and highlight every difference between two contract versions — distinguishing structural changes, clause modifications, and minor corrections. Gives legal and procurement teams instant clarity on what changed between drafts.</p>
+      </div>
+      <div class="project-impact">
+        <div class="impact-number">3x</div>
+        <div class="impact-label">Change types<br>detected & classified</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div>
+        <div class="project-section-title">Change Classification</div>
+        <ul class="challenge-list">
+          <li>Structural changes — clauses added, removed, or reordered</li>
+          <li>Semantic changes — meaning altered in existing sentences</li>
+          <li>Surface corrections — spelling, punctuation, formatting only</li>
+          <li>Page-level diff view with color-coded highlighting per type</li>
+        </ul>
+      </div>
+      <div>
+        <div class="project-section-title">Tech Stack</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Gemini File API</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PDF Processing</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Diff Algorithms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: CONTRACT ANALYSIS -->
+  <div class="project-card fade-up">
+    <div class="project-header">
+      <div class="project-meta">
+        <div class="project-index">04 / Construction · Document Intelligence</div>
+        <h3 class="project-title">Construction Document Analysis & Roof Estimation</h3>
+        <div class="project-client">↗ Deployed for US construction estimation company</div>
+        <p class="project-desc">Multimodal AI pipeline that processes construction blueprints, PDFs and site images to extract structured data — including roof geometry, canopy dimensions, and material specifications. Calculates actual surface areas using real-world formulas to generate accurate cost estimations.</p>
+      </div>
+      <div class="project-impact">
+        <div class="impact-number">Auto</div>
+        <div class="impact-label">Surface area<br>calculation from plans</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div>
+        <div class="project-section-title">Key Capabilities</div>
+        <ul class="challenge-list">
+          <li>Multimodal ingestion — PDFs, images, and mixed construction documents</li>
+          <li>Roof geometry extraction and real-world surface area calculation</li>
+          <li>Structured output in client-defined estimation format</li>
+          <li>Canopy, ridge, and slope data parsing from technical drawings</li>
+        </ul>
+      </div>
+      <div>
+        <div class="project-section-title">Tech Stack</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Gemini File API</span>
+          <span class="tech-tag">Multimodal LLM</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">PDF Parsing</span>
+          <span class="tech-tag">Geometry Algorithms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="section-divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// capabilities</div>
+  <h2 class="section-title">Technical Stack</h2>
+  <div class="skills-grid">
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">AI & ML</div>
+      <div class="skill-items">
+        <span class="skill-item">LLMs</span>
+        <span class="skill-item">RAG</span>
+        <span class="skill-item">Computer Vision</span>
+        <span class="skill-item">OCR</span>
+        <span class="skill-item">NLP</span>
+        <span class="skill-item">Fine-tuning</span>
+        <span class="skill-item">Multi-Agent</span>
+        <span class="skill-item">SAM 3</span>
+        <span class="skill-item">YOLO</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Models & APIs</div>
+      <div class="skill-items">
+        <span class="skill-item">OpenAI GPT-4o</span>
+        <span class="skill-item">Gemini</span>
+        <span class="skill-item">Azure OCR</span>
+        <span class="skill-item">Google Grounding</span>
+        <span class="skill-item">Gemini File API</span>
+        <span class="skill-item">Google Maps API</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Backend & Infra</div>
+      <div class="skill-items">
+        <span class="skill-item">Python</span>
+        <span class="skill-item">FastAPI</span>
+        <span class="skill-item">Docker</span>
+        <span class="skill-item">GCP</span>
+        <span class="skill-item">AWS</span>
+        <span class="skill-item">Azure</span>
+        <span class="skill-item">PostgreSQL</span>
+        <span class="skill-item">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Frontend</div>
+      <div class="skill-items">
+        <span class="skill-item">React</span>
+        <span class="skill-item">Next.js</span>
+        <span class="skill-item">TypeScript</span>
+        <span class="skill-item">Tailwind CSS</span>
+        <span class="skill-item">Node.js</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// timeline</div>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="exp-item fade-up">
+    <div class="exp-date">Jul 2025 — Present<br><br>Pune, India · On-site</div>
+    <div>
+      <div class="exp-role">AI Developer</div>
+      <div class="exp-company">Geeky Bee AI Private Limited</div>
+      <ul class="exp-points">
+        <li>Built Arabic OCR insurance automation pipeline — reduced client processing time by 90%</li>
+        <li>Led satellite imagery → AutoCAD pipeline for US traffic management platform using SAM 3 and fine-tuned CV models</li>
+        <li>Built multi-agent LLM system with Google Grounding Search covering all US state traffic regulations</li>
+        <li>Developed AI-powered PDF contract differentiator classifying structural, semantic, and surface-level changes</li>
+        <li>Built construction document analysis pipeline using Gemini File API for roof estimation and takeoff analysis</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item fade-up">
+    <div class="exp-date">Jan 2025 — Jul 2025<br><br>Pune, India</div>
+    <div>
+      <div class="exp-role">AI Development Intern</div>
+      <div class="exp-company">Geeky Bee AI Private Limited</div>
+      <ul class="exp-points">
+        <li>Designed RAG-based QA system reducing query resolution time by 30%</li>
+        <li>Built CCTV computer vision pipeline for loitering detection, trespassing alerts, and vehicle counting — deployed in Philippines</li>
+        <li>Automated data pipelines reducing manual workflows by 70%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item fade-up">
+    <div class="exp-date">Jul 2024 — Present<br><br>Pune, India</div>
+    <div>
+      <div class="exp-role">Research Intern</div>
+      <div class="exp-company">SCAAI — Symbiosis Centre for Applied AI</div>
+      <ul class="exp-points">
+        <li>Applied AI research in computer vision and multimodal systems</li>
+        <li>AgNOR detection in medical imaging using OpenCV and deep learning</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item fade-up">
+    <div class="exp-date">Mar 2024 — Sep 2024<br><br>Ingolstadt, Germany</div>
+    <div>
+      <div class="exp-role">Exchange Semester</div>
+      <div class="exp-company">Technische Hochschule Ingolstadt</div>
+      <ul class="exp-points">
+        <li>B.Tech AI — international semester focused on applied AI and image recognition</li>
+        <li>Grade: 2.2 (German grading system)</li>
+        <li>Expanded European academic and professional network</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-section fade-up">
+    <h2 class="contact-title">Let's Build<br><span style="color:var(--accent)">Something Real</span></h2>
+    <p class="contact-sub">Open to remote AI engineering roles with EU and US companies. Available for full-time positions and contract work.</p>
+    <div class="contact-links">
+      <a href="mailto:lakshya.kaushik811@gmail.com" class="contact-link">✉ lakshya.kaushik811@gmail.com</a>
+      <a href="https://linkedin.com/in/lakshya-kaushik" target="_blank" class="contact-link">in LinkedIn</a>
+      <a href="https://github.com/lakshya811" target="_blank" class="contact-link">⌥ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Lakshya Kaushik · Built with intention · Remote-first
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
       }
-      50% {
-        box-shadow: 0 0 0 8px rgba(34,211,238,.1), 0 0 30px rgba(34,211,238,.6);
-      }
-    }
-    
-    @media (min-width:768px) {
-      .timeline-dot {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-    
-    .proj {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border-radius: 1.5rem;
-      background: linear-gradient(135deg, rgba(17,24,39,.9), rgba(17,24,39,.7));
-      border: 1px solid rgba(255,255,255,.1);
-      transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-    
-    .proj:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: rgba(34,211,238,.4);
-      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 40px rgba(34,211,238,.15);
-    }
-    
-    .proj-img {
-      width: 100%;
-      height: 14rem;
-      object-fit: cover;
-      display: block;
-      background: linear-gradient(135deg, #0b1220, #1e293b);
-      transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .proj:hover .proj-img {
-      transform: scale(1.1);
-    }
-    
-    .proj-body {
-      padding: 1.5rem;
-    }
-    
-    .proj-title {
-      font-weight: 800;
-      background: linear-gradient(135deg, #67e8f9, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 1.25rem;
-      margin-bottom: .5rem;
-    }
-    
-    .proj-text {
-      color: rgba(255,255,255,.85);
-      margin-top: .5rem;
-      line-height: 1.6;
-    }
-    
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: 1rem;
-    }
-    
-    .tags span {
-      font-size: .75rem;
-      font-weight: 600;
-      padding: .375rem .75rem;
-      border-radius: .5rem;
-      background: rgba(34,211,238,.1);
-      border: 1px solid rgba(34,211,238,.2);
-      color: #67e8f9;
-      transition: all .2s ease;
-    }
-    
-    .tags span:hover {
-      background: rgba(34,211,238,.2);
-      border-color: rgba(34,211,238,.4);
-      transform: translateY(-2px);
-    }
-  </style>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Scroll progress bar
-    const progressBar = document.getElementById('progress-bar');
-    window.addEventListener('scroll', () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / scrollHeight) * 100;
-      progressBar.style.width = `${scrolled}%`;
     });
+  }, { threshold: 0.1 });
 
-    // Mobile menu
-    const btn = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    const openI = document.getElementById('menu-open');
-    const closeI = document.getElementById('menu-close');
-    btn?.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden');
-      const expanded = !open;
-      btn.setAttribute('aria-expanded', String(expanded));
-      openI.classList.toggle('hidden');
-      closeI.classList.toggle('hidden');
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
     });
-
-    // Close mobile menu when clicking a link
-    const mobileLinks = document.querySelectorAll('#mobile-menu a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-        openI.classList.remove('hidden');
-        closeI.classList.add('hidden');
-      });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
     });
-
-    // Scrollspy via IntersectionObserver
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const links = [...document.querySelectorAll('.nav-link')];
-    const setActive = (id) => {
-      links.forEach(a => {
-        const active = a.getAttribute('href') === `#${id}`;
-        a.classList.toggle('text-brand-400', active);
-        a.classList.toggle('bg-white/10', active);
-        a.setAttribute('aria-current', active ? 'page' : 'false');
-      });
-    };
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
-    }, { threshold: 0.4 });
-    sections.forEach(s => obs.observe(s));
-
-    // Reveal on scroll with stagger
-    const rev = document.querySelectorAll('.reveal');
-    const rObs = new IntersectionObserver((es) => {
-      es.forEach((e, i) => { 
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('in'), i * 50);
-        }
-      });
-    }, { threshold: 0.1 });
-    rev.forEach(el => rObs.observe(el));
-
-    // Build chips dynamically when JS available
-    const skillsHost = document.querySelector('#skills-container');
-    if (skillsHost) {
-      const skills = [
-        'Python','PyTorch','TensorFlow','Scikit-learn','XGBoost','Keras','Computer Vision','NLP','OpenCV','YOLO','Faster R-CNN','U-Net','Transformers','BERT','GPT','LLMs','FastAPI','Flask','Streamlit','Gradio','Docker','Kubernetes','AWS','GCP','Azure','Git','CI/CD','MLflow','Weights & Biases','Pandas','NumPy','SQL','MongoDB'
-      ];
-      const frag = document.createDocumentFragment();
-      skills.forEach((s, i) => {
-        const span = document.createElement('span');
-        span.className = 'chip';
-        span.textContent = s;
-        span.style.animationDelay = `${i * 0.05}s`;
-        span.style.opacity = '0';
-        span.style.animation = 'fadeInUp 0.6s ease forwards';
-        frag.appendChild(span);
-      });
-      skillsHost.textContent = '';
-      skillsHost.appendChild(frag);
-    }
-    
-    // Add fade-in animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+  });
+</script>
 </body>
 </html>
